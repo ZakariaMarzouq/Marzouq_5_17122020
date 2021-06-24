@@ -1,7 +1,7 @@
 /* Général */
 
 body {
-  width: 97%;
+  width: 100%;
   text-decoration: none;
   list-style-type: none;
   font-family: sans-serif;
@@ -10,6 +10,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
+
 }
 
 #btn {
@@ -26,18 +28,17 @@ body {
 }
 
 /* Séction header */
-
 header {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  //padding: 10px;
   .logo {
     width: 20%;
   }
   .navbar {
-    width: 100%;
+    width: 80%;
     list-style-type: none;
     display: flex;
     flex-direction: row;
@@ -53,7 +54,6 @@ header {
 }
 
 /* Séction title */
-
 h1 {
   width: 100%;
   font-size: 3.5rem;
@@ -62,13 +62,13 @@ h1 {
 }
 
 /* Séction Liste de produits */
-
 #list-container,
 #container-product {
   width: 100%;
   display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
   div {
     width: 100%;
     display: flex;
@@ -77,13 +77,16 @@ h1 {
     justify-content: center;
   }
   #theme_card {
-    width: 40%;
+    width: 100vw;
     border-radius: 10px;
     padding: 0px 0px;
     margin-bottom: 40px;
     background: #221321;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-content: stretch;
+    align-items: center;
     a {
       text-decoration: none;
     }
@@ -139,7 +142,6 @@ h1 {
 }
 
 /* Page Panier */
-
 #basket {
   width: 100%;
   display: flex;
@@ -207,7 +209,6 @@ h1 {
   }
 
   /* Panier vide */
-
   .container-panier-vide {
     display: flex;
     justify-content: center;
@@ -217,7 +218,6 @@ h1 {
 }
 
 /* Formulaire de commande */
-
 #formBasket {
   display: flex;
   flex-direction: column;
@@ -236,7 +236,8 @@ h1 {
       font-size: 1.1rem;
       padding: 25px 0px 5px 0px;
     }
-    input, textarea {
+    input,
+    textarea {
       cursor: pointer;
       padding: 10px;
       border-radius: 5px;
@@ -255,14 +256,12 @@ h1 {
       background: #8f5bfe;
       font-size: 1.5rem;
       color: white;
-
     }
   }
 }
 
-/* Confirmation commande */@at-root
-
-#container-order {
+/* Confirmation commande */
+@at-root #container-order {
   display: flex;
   flex-direction: column;
   border: solid 2px black;
@@ -272,5 +271,4 @@ h1 {
   .bold {
     font-weight: bold;
   }
-
 }

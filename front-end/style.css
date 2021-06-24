@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* Général */
 body {
-  width: 97%;
+  width: 100%;
   text-decoration: none;
   list-style-type: none;
   font-family: sans-serif;
@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 #btn {
@@ -31,13 +32,12 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
 }
 header .logo {
   width: 20%;
 }
 header .navbar {
-  width: 100%;
+  width: 80%;
   list-style-type: none;
   display: flex;
   flex-direction: row;
@@ -66,6 +66,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-around;
 }
 #list-container div,
 #container-product div {
@@ -77,13 +78,16 @@ h1 {
 }
 #list-container #theme_card,
 #container-product #theme_card {
-  width: 40%;
+  width: 100vw;
   border-radius: 10px;
   padding: 0px 0px;
   margin-bottom: 40px;
   background: #221321;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-content: stretch;
+  align-items: center;
 }
 #list-container #theme_card a,
 #container-product #theme_card a {
@@ -233,7 +237,8 @@ h1 {
   font-size: 1.1rem;
   padding: 25px 0px 5px 0px;
 }
-#formBasket form input, #formBasket form textarea {
+#formBasket form input,
+#formBasket form textarea {
   cursor: pointer;
   padding: 10px;
   border-radius: 5px;
