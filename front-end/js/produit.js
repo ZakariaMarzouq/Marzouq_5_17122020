@@ -115,7 +115,7 @@ const getProductFromApi = async () => {
           //window.confirm affiche un dialogue modal avec un message et deux boutons, OK et Annuler.
           if (
             window.confirm(`Bravo ! Votre ${product.name} option: ${options} a bien été ajouté au panier. 
-            Pour consultez le panier appuyez sur OK sinon appuyez sur ANNULER pour revenir à l'accueil`)
+Pour consultez le panier appuyez sur OK sinon appuyez sur ANNULER pour revenir à l'accueil`)
           ) {
             window.location.href = "panier.html";
           } else {
