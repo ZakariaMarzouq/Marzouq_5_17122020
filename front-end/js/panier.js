@@ -1,15 +1,13 @@
 ///----------------------- PAGE PANIER ------------------------///
 
 //Déclaration de la variable "productSaveInLocalStorage" dans laquelle on met les keys et values présent dans le localStorage
-//JSON.parse permet de convertir les données au format JSON qui sont dans le localStorage en objet Javascript
+//JSON.parse me permet de convertir les données au format JSON qui sont dans le localStorage en objet Javascript
 let productSaveInLocalStorage = JSON.parse(localStorage.getItem("produit"));
-console.log(productSaveInLocalStorage);
 
 //----------DEBUT - Fonction AFFICHAGE DES PRODUITS DANS LE PANIER ----------//
 
 //Sélectionner la classe ou je doit injecter mon html
 const positionElementBasket = document.querySelector("#basket");
-console.log(positionElementBasket);
 
 // Si panier est vide : Afficher le panier est vide
 if (productSaveInLocalStorage === null || productSaveInLocalStorage == 0) {
@@ -23,7 +21,7 @@ if (productSaveInLocalStorage === null || productSaveInLocalStorage == 0) {
     </div>`;
   positionElementBasket.innerHTML = basketBlank;
 } else {
-  //si le panier n'est pas vide, je dois afficher les produits sélectionné depuis le localStorage
+  //si le panier n'est pas vide, je dois afficher les produits sélectionné présent dans le localStorage
   let templateProductBasket = [];
   for (j = 0; j < productSaveInLocalStorage.length; j++) {
     templateProductBasket =
@@ -37,28 +35,18 @@ if (productSaveInLocalStorage === null || productSaveInLocalStorage == 0) {
         </div>
       </div>
       `;
-    console.log(productSaveInLocalStorage[j].prix);
   }
   if (j === productSaveInLocalStorage.length) {
     // injecter le html sur la page panier
     positionElementBasket.innerHTML = templateProductBasket;
   }
 }
-
-//const products = {
- // productSaveInLocalStorage,
-//};
-//console.log(products);
-
 //----------FIN - Fonction AFFICHAGE DES PRODUITS DANS LE PANIER ----------//
-
-/*********************************************************************************/
 
 //////////////Gestion du bouton de suppression produit /////////////
 
 // Création d'une variable "btnClear" pour la suppression des articles dans le panier
 let btnClear = document.querySelectorAll(".btn-clear");
-console.log(btnClear);
 
 //Boucle for pour itéréer sur tout les éléments "cta supp" du panier
 for (let k = 0; k < btnClear.length; k++) {
@@ -73,18 +61,17 @@ for (let k = 0; k < btnClear.length; k++) {
     productSaveInLocalStorage = productSaveInLocalStorage.filter(
       (elt) => elt.product_id !== selectIdDelete
     );
-    console.log(productSaveInLocalStorage);
 
-    // On envoi les nouvelles valeurs dans le localStorage
+    // On envoi les nouvelles valeurs sur le localStorage
     localStorage.setItem("produit", JSON.stringify(productSaveInLocalStorage));
 
-    //Alert pour avertir de la suppression de l'article
+    //Alerte pour avertir de la suppression de l'article
     alert("Votre produit a été supprimer de votre panier");
     window.location.href = "panier.html";
   });
 }
 
-/*********************************************************************************/
+/******************************* FIN - Gestion du bouton de suppression produit ********************************************/
 
 //----------DEBUT - Fonction du bouton pour vider intégralement le panier ----------//
 
@@ -92,7 +79,6 @@ for (let k = 0; k < btnClear.length; k++) {
 const eltBtnAllClear = `
 <button class="btn-clear-All">Videz le panier</button>
 `;
-console.log(eltBtnAllClear);
 
 // insertion du bouton dans le HTML de la page panier
 //insertAdjacentHTML() analyse le texte spécifié en tant que HTML ou XML Ceci, et le fait d'éviter la sérialisation supplémentaire, rend la fonction plus rapide et directe que innerHTML.
@@ -100,7 +86,6 @@ positionElementBasket.insertAdjacentHTML("beforeend", eltBtnAllClear);
 
 //Sélectionner de l'id du bouton "btnAllClear".
 const btnAllClear = document.querySelector(".btn-clear-All");
-console.log(btnAllClear);
 
 //-------Suppression de la "key" produit du localStorage
 btnAllClear.addEventListener("click", (event) => {
@@ -194,7 +179,6 @@ displayFormBasket();
 
 //Séléction du CTA envoyer formulaire de contact
 const btnSendForm = document.querySelector("#btn-Validation-form");
-console.log(btnSendForm);
 
 //---------AddEventListener pour écouter les évenements du formulaire
 
@@ -209,8 +193,6 @@ btnSendForm.addEventListener("click", (event) => {
     city: document.querySelector("#city").value,
     email: document.querySelector("#email").value,
   };
-  console.log("VALEUR FORMULAIRE DE CONTACT :");
-  console.log(contact);
 
   //-------- Début - GESTION VALIDATION DU FORMULAIRE  --------//
 
@@ -219,7 +201,7 @@ btnSendForm.addEventListener("click", (event) => {
     return `${value}: Les Chiffres et symbole ne sont pas autorisé :/ \n Merci de corriger votre saisie. \n Pour info  Min: 3 caractères et Max: 20 caractères autorisés `;
   };
 
-  /********************Configuration des REGEX**************************/
+  /******************** Début - Configuration des REGEX**************************/
 
   // Fonction pour sauvegarder la methode regEx pour les champs (lastName, Prénom et city)
   const regExLastNameFirstNameCity = (value) => {
@@ -231,13 +213,14 @@ btnSendForm.addEventListener("click", (event) => {
     return /^[A-Za-z0-9\s]{5,50}$/.test(value);
   };
 
-
   //Fonction pour sauvegarder la methode regEx pour le champ (EMAIL)
   const regExEmail = (value) => {
     return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
   };
 
-  /********************Controle des champs du formulaire ***************/
+  /******************** FIN - Configuration des REGEX**************************/
+
+  /******************** Début - Controle des champs du formulaire ***************/
 
   //Controle et validité du champ "NOM"
   function validityLastName() {
@@ -318,10 +301,6 @@ btnSendForm.addEventListener("click", (event) => {
       ),
     };
 
-    console.log("Donnée envoyée au server");
-    console.log(sendServer);
-    console.log(productSaveInLocalStorage.map((product) => product.product_id));
-
     sendDataServer(sendServer);
 
     //Sinon 'Alert' champ ou saisi incorrect
@@ -340,12 +319,9 @@ btnSendForm.addEventListener("click", (event) => {
       },
     });
 
-    console.log("promise objet SendServer");
-    console.log(promise01);
-
     //Pour consulter le résultat du serveur sur la console
     promise01.then(async (response) => {
-      //si la promesse est rejetée et pas résolu "gestion des erreurs avec try et catch()"
+      //si la promesse est rejetée et pas résolut "gestion des erreurs avec try et catch()"
       try {
         const content = await response.json();
         console.log("contenu de la reponse");
@@ -378,15 +354,14 @@ btnSendForm.addEventListener("click", (event) => {
 
 /*************Function pour Envoi data au server***************** */
 
-//-------------Mettre le contenu du localStorage sur les champs du formulaire
-// récuperer la key du localStorage et la mettre dans une variable
+//Mettre le contenu du localStorage sur les champs du formulaire
+//Récuperer la key du localStorage et la mettre dans une variable
 const dataLocalStorage = localStorage.getItem("contact");
 
-//CONVERTIR la chaine de caractère enobjet Javascript avec la methode "JSON.parse()"
+//CONVERTIR la chaine de caractère en objet Javascript avec la methode "JSON.parse()"
 const dataLocalStorageObject = JSON.parse(dataLocalStorage);
 
 //Fonction pour que les champs du formulaire soit rempli si les données sont présent sur le localStorage
-
 function dataFormSaveInLocalStrorage(input) {
   if (dataLocalStorageObject == null) {
     console.log("Le localStorage a pour valeur null");
@@ -400,6 +375,3 @@ dataFormSaveInLocalStrorage("firstName");
 dataFormSaveInLocalStrorage("address");
 dataFormSaveInLocalStrorage("city");
 dataFormSaveInLocalStrorage("email");
-
-console.log("data LocalStorage Object");
-console.log(dataLocalStorageObject);

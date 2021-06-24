@@ -8,8 +8,7 @@ console.log(`orderId : ${responseId} `);
 const priceTotal = localStorage.getItem("priceTotal");
 console.log(`priceTotal : ${priceTotal}€ TTC`);
 
-//Template structure HTML de la page de confirmation &
-// Sélection de l'élément du DOM
+//Template structure HTML de la page de confirmation et sélection de l'élément du DOM
 const eltHtmlConfirmOrder = document.querySelector("#container-order");
 
 const templateConfirmOrder = `
