@@ -108,7 +108,7 @@ const getProductFromApi = async () => {
         };
 
         console.log(options);
-        
+
 
          //Fonction fenêtre Alert Pop Up
          const popupConfirmation = () => {
@@ -162,29 +162,3 @@ const getProductFromApi = async () => {
 
 getProductFromApi();
 
-/////////////////////////Local Storage//////////////////////////////
-
-//Ajouter une donnée dans le local storage
-//let nom = "Marzouq"
-//let pays = "Maroc"
-//localStorage.setItem("nom", nom)
-//localStorage.setItem("prenom", "Leia")
-//localStorage.setItem("lieu", pays)
-
-//Récuperer une donnée du local storage
-//let maData = localStorage.getItem("lieu")
-//console.log(maData);
-
-// suprimer une donnée dans le localStorage
-
-//localStorage.removeItem("lieu")
-
-// Supprimer toute les valeurs de mon localStorage
-
-//localStorage.clear();
-
-// Function : récuperer le produit et quantité --> ajout de cette fonction dans le localstorage
-
-// Créatiion d'un écouteur d'event sur l'ajout du produit
-//
-// ajout d'un lien "voir mon panier" avec redirection
