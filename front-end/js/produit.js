@@ -1,8 +1,6 @@
 ////////////// page produit //////////////////////
 
-/* Création d'une fonction permettant la récupération d'une nouvelle 
-URL produit avec une requete de la clé et valeur de paramètre*/
-
+// Création d'une fonction permettant la récupération d'une nouvelle URL produit avec une requete de la clé et valeur de paramètre.
 // récupération de la chaine de requete dans l'url
 const getQueries = () => {
   const params = new URLSearchParams(window.location.search);
@@ -16,8 +14,7 @@ const getQueries = () => {
 // Variable pour l'appel de la requete de l'id produit
 const idProduct = getQueries().produit;
 
-/* Appel de l'API pour récupérer le lien du produit à afficher à l'aide de la 
-variable "idProduct" et affichage du html*/
+// Appel de l'API pour récupérer le lien du produit à afficher à l'aide de la variable "idProduct" et affichage du html
 const getProductFromApi = async () => {
   await fetch(`http://localhost:3000/api/cameras/${idProduct}`)
     .then((response) => response.json())
@@ -41,23 +38,21 @@ const getProductFromApi = async () => {
             <button id="btn" type="submit" name="btn">Ajouter au panier</button>
         </div>`;
 
-      //Le formulaire s'adapte au nombre d'option qu'il y a dans l'objet du produit
+      //Le formulaire s'adapte au nombre d'option qu'il y a dans l'objet du produit.
       const optionQuantity = product.lenses;
       let templateOptions = [];
-      console.log(optionQuantity);
 
-      //Générer une boucle for pour itérer sur toute les options
+      //Générer une boucle for pour itérer sur toute les options.
       for (let i = 0; i < optionQuantity.length; i++) {
         templateOptions =
           templateOptions +
           `<option value="${optionQuantity[i]}">${optionQuantity[i]}</option>`;
       }
-      //injecter le html pour le choix des options produit
+      //injecter le html pour le choix des options produit.
       const eltOption = document.querySelector("#option_product");
       eltOption.innerHTML = templateOptions;
-      console.log(eltOption);
 
-      //Quantité : choisir la quantité de produit
+      //Quantité : choisir la quantité de produit.
       const templateQuantity = `
       <option value="1">1</option>
       <option value="2">2</option>
@@ -69,36 +64,32 @@ const getProductFromApi = async () => {
       <option value="8">8</option>
       <option value="9">9</option>
       <option value="10">10</option>`;
-      //console.log(templateQuantity);
 
       //Afficher les quantité sur la page :
       const positionElementQuantity = document.querySelector("#numberQuantity");
       positionElementQuantity.innerHTML = templateQuantity;
-      //console.log(positionElementQuantity);
 
       /////////////////////////////// La gestion du panier /////////////////////////
 
-      //Récupération des données sélectionnées par l'utilisateur et envoie du panier
+      //Récupération des données sélectionnées par l'utilisateur et envoie du panier.
 
-      // Sélection de l'id du formulaire
+      // Sélection de l'id du formulaire.
       const idForm = document.querySelector("#option_product");
-      //console.log(idForm);
 
-      //Sélection du bouton Ajouter au panier
+      //Sélection du bouton Ajouter au panier.
       const btnAddBasket = document.querySelector("#btn");
-      //console.log(btnAddBasket);
 
-      // Ecouter le bouton et envoyer au panier
+      //Ecouter le bouton et envoyer au panier.
       btnAddBasket.addEventListener("click", (event) => {
         event.preventDefault();
 
         //Mettre le choix de l'utilisateur dans une variable
         const options = idForm.value;
 
-        // Quantité : Mettre la quantité dans une variable
+        //Mettre la quantité dans une variable.
         const selectQuantity = positionElementQuantity.value;
 
-        //Récupération des valeurs du formulaire
+        //Récupération des valeurs et options du produit sélectionné.
         let optionsUser = {
           name: product.name,
           product_id: product._id,
@@ -107,11 +98,8 @@ const getProductFromApi = async () => {
           prix: (product.price * selectQuantity) / 100,
         };
 
-        console.log(options);
-
-
-         //Fonction fenêtre Alert Pop Up
-         const popupConfirmation = () => {
+        //Fonction fenêtre Alert Pop Up
+        const popupConfirmation = () => {
           //window.confirm affiche un dialogue modal avec un message et deux boutons, OK et Annuler.
           if (
             window.confirm(`Bravo ! Votre ${product.name} option: ${options} a bien été ajouté au panier. 
@@ -126,15 +114,14 @@ Pour consultez le panier appuyez sur OK sinon appuyez sur ANNULER pour revenir �
 
         //Stocker la récupération des valeurs du panier dans le localStorage
 
-        /*//Déclaration de la variable "productSaveInLocalStorage" 
-        dans laquelle on met les keys et values présent dans le localStorage. //JSON.parse 
-        permet de convertir les données au format JSON qui sont dans le localStorage en objet Javascript*/
+        /*Déclaration de la variable "productSaveInLocalStorage" 
+        dans laquelle on met les keys et values présent dans le localStorage. la méthode 
+        JSON.parse permet de convertir les données au format JSON qui sont dans le localStorage en objet Javascript*/
         let productSaveInLocalStorage = JSON.parse(
           localStorage.getItem("produit")
         );
-        console.log(productSaveInLocalStorage);
 
-               // Function permettant d'ajouter le produit sélectionné au panier
+        //Fonction permettant l'ajout du produit sélectionné au panier
         const addProductBasket = () => {
           // Ajout dans le tableau de l'objet contenant les valeurs choisi par l'utilisateur
           productSaveInLocalStorage.push(optionsUser);
@@ -150,7 +137,7 @@ Pour consultez le panier appuyez sur OK sinon appuyez sur ANNULER pour revenir �
           addProductBasket();
           popupConfirmation();
         }
-        //Si le localStroage ne présente pas de produit enregistré.
+        //Si le localStrage ne présente pas de produit enregistré.
         else {
           productSaveInLocalStorage = [];
           addProductBasket();
@@ -161,4 +148,3 @@ Pour consultez le panier appuyez sur OK sinon appuyez sur ANNULER pour revenir �
 };
 
 getProductFromApi();
-
