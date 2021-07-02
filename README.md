@@ -1,10 +1,10 @@
-**IMPORTANT : Afin d'accerder à l'intégralité du projet, Il vous faut télécharger le __backend__ et suivre les instructions fournie par openclassrooms en suivant le lien [lien] ci-après : (https://github.com/OpenClassrooms-Student-Center/JWDP5).**
+**IMPORTANT : Afin d'accerder à l'intégralité du projet, Il vous faut en complément télécharger le __backend__ et suivre les instructions fournie par openclassrooms en suivant le [lien] ci-après : (https://github.com/OpenClassrooms-Student-Center/JWDP5).**
 
 
 # Projet 5 du parcours Développeur web d'OpenClassrooms : 
 # Construire un site e-commerce ORINOCO
 
->Il s'agit d'un MVP d'une application thématique ne vendant qu'un seul type de produits (ici des appareils photos) ; la partie back-end est fournie et l'objectif est de créer la partie front-end par l’intermédiaire d'une API fournie. 
+>Il s'agit d'un MVP d'une application thématique ne vendant qu'un seul type de produits **(ici des appareils photos)** ; la partie back-end est fournie et l'objectif est de créer la partie front-end par l’intermédiaire d'une API fournie. 
 
 ## Compétences évaluées :
 
